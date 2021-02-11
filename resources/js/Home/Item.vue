@@ -7,7 +7,9 @@
                 <p class="card-text">{{ description }}</p>
             </div>
             <div class="card-footer">
-                <a href="" class="btn btn-primary">Go somewhere</a>
+                <router-link :to="{name: 'video', params: {id: video.id.videoId, video: video}}" class="btn btn-primary">
+                    Watch Video
+                </router-link>
             </div>
         </div>
     </div>

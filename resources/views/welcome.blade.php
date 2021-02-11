@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md">
-            <home></home>
+            <h1>Youtube Manager</h1>
         </div>
     </div>
 </div>
