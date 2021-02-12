@@ -8,12 +8,17 @@
             <hr>
             <h6 class="mb-2">Channel: {{video.snippet.channelTitle}}</h6>
             <p>{{ video.snippet.description }}</p>
+            <Comment />
         </div>
     </div>
 </template>
 
 <script>
+import Comment from './Comment/Comment.vue'
 export default {
+    components: {
+        Comment
+    },
     created() {
         if (this.$route.params.video === undefined) {
             this.$router.push({name: 'home'});
