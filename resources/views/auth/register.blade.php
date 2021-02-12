@@ -62,10 +62,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="g-recaptcha-response" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
 
                             <div class="col-md-6">
-                                @push('scripts')
+                                @push('styles')
                                     {!! NoCaptcha::renderJs() !!}
                                 @endpush
                                 {!! NoCaptcha::display() !!}
