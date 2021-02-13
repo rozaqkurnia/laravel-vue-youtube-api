@@ -26,6 +26,11 @@ export default {
     created() {
         window.eventBus.$on('AddComment', res => this.handleNewComment(res));
         this.loadComments();
+        window.Echo.channel('comments')
+            .listen('.comment.created', event => {
+                console.log('event', event);
+                this.handleNewComment(event.comment);
+            });
     },
 
     methods: {

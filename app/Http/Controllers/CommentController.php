@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentCreatedEvent;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class CommentController extends Controller
         ]);
 
         $comments = Comment::where('video_id', $request->video_id)
-            ->orderBy('created_at')
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
 
         $resource = CommentResource::collection($comments);
@@ -36,6 +38,10 @@ class CommentController extends Controller
             'video_id' => $data['video_id']
         ]);
 
-        return response($comment, 201);
+        $resource = new CommentResource($comment);
+
+        event(new CommentCreatedEvent($resource));
+
+        return response($resource, 201);
     }
 }
